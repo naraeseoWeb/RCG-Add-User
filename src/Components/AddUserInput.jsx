@@ -5,6 +5,7 @@ import Button from '../UI/Button';
 const AddUserInput = ({ onAddUser }) => {
   const [enteredName, setEnteredName] = useState(null);
   const [enteredAge, setEnteredAge] = useState(null);
+  // const [isValid, setIsValid] = useState(false);
 
   const userNameInputHandler = (e) => {
     setEnteredName(e.target.value);
@@ -14,16 +15,18 @@ const AddUserInput = ({ onAddUser }) => {
     setEnteredAge(e.target.value);
   };
 
+  console.log(enteredName, 'enteredName');
+
   const addUserSubmitHandler = (e) => {
     e.preventDefault();
-    if (enteredName.trim().length === 0) {
-      window.alert('이름을 다시 입력하시오');
+    if (enteredName === null) {
+      console.log('문제있음');
       return;
     }
-    if (enteredAge.trim().length === 0) {
-      window.alert('나이를 다시 입력하시오');
-      return;
-    }
+    // if (enteredAge.trim().length === 0) {
+    //   window.alert('나이를 다시 입력하시오');
+    //   return;
+    // }
     onAddUser({ name: enteredName, age: enteredAge });
   };
 
