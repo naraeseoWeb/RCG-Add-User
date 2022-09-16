@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Button from '../../UI/Button';
+import Button from '../UI/Button';
 
-const AddUserInput = () => {
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredAge, setEnteredAge] = useState('');
+const AddUserInput = ({ onAddUser }) => {
+  const [enteredName, setEnteredName] = useState(null);
+  const [enteredAge, setEnteredAge] = useState(null);
 
   const userNameInputHandler = (e) => {
     setEnteredName(e.target.value);
@@ -24,6 +24,7 @@ const AddUserInput = () => {
       window.alert('나이를 다시 입력하시오');
       return;
     }
+    onAddUser({ name: enteredName, age: enteredAge });
   };
 
   return (
