@@ -2,7 +2,6 @@ import AddUserInput from './Components/AddUserInput';
 import './App.css';
 import { useState } from 'react';
 import AddUserList from './Components/AddUserList';
-import Modal from './UI/Modal';
 
 function App() {
   const [userInfo, setUserInfo] = useState([]);
@@ -31,9 +30,6 @@ function App() {
           <AddUserList onAddUser={addedUser} items={userInfo} />
         </section>
       </div>
-      <Modal title='Invalid Input' buttonType='button' buttonContent='Okay'>
-        Please enter a valid name and age (non-emptyValues).
-      </Modal>
     </>
   );
 }

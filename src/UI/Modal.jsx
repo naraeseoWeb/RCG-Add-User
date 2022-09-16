@@ -2,11 +2,11 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 
-const Modal = ({ title, children, buttonType, buttonContent }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Modal = ({ title, children, buttonType, buttonContent, defaultOpen }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   const okayButtonClickHandler = () => {
-    setIsOpen(false);
+    setIsOpen(!isOpen);
   };
 
   return (
