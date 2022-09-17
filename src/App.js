@@ -1,36 +1,24 @@
-import AddUserInput from './Components/AddUserInput';
-import './App.css';
 import { useState } from 'react';
-import AddUserList from './Components/AddUserList';
+import AddUser from './Component/Users/AddUser';
+import UsersList from './Component/Users/UsersList';
 
 function App() {
-  const [userInfo, setUserInfo] = useState([]);
-  const [addedUser, setAddedUser] = useState(false);
+  const [usersList, setUsersList] = useState([]);
 
-  const AddUserHandler = (enteredText) => {
-    setUserInfo((prevText) => {
-      const updatedText = [...prevText];
-      updatedText.push({
-        name: enteredText.name,
-        age: enteredText.age,
-        id: Math.random().toString(),
-      });
-      setAddedUser(true);
-      return updatedText;
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
     });
   };
 
   return (
-    <>
-      <div className='App'>
-        <section className='AddUser-form'>
-          <AddUserInput onAddUser={AddUserHandler} />
-        </section>
-        <section className='User-List'>
-          <AddUserList onAddUser={addedUser} items={userInfo} />
-        </section>
-      </div>
-    </>
+    <div>
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
+    </div>
   );
 }
 
